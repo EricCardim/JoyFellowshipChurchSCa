@@ -640,13 +640,12 @@
 
   /* ---------- YouTube carousel — RSS automático ---------- */
   const YT_CHANNEL_ID = 'UC-RK7wM8XwSi83H0bOsog8g';
-  const YT_FALLBACK = [{ id: 'xINcVeu0coY', title: 'Culto ao vivo — Joy Fellowship Church' }];
+  const YT_FALLBACK = [{ id: 'O_8KMdzeBSU', title: 'Sardes — A Igreja que parecia viva, mas estava morta | Pr. Diego Silva' }];
   const ytThumbUrl = (id) => `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
   let ytVideos = [];
   let ytActive = 0;
   let ytTimer = null;
 
-  // Mostra spinner enquanto carrega
   (function showLoadingState() {
     document.getElementById('ytFrame').innerHTML =
       '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#fff;font-size:0.9rem;gap:8px;">' +
@@ -663,23 +662,27 @@
     const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${YT_CHANNEL_ID}`;
     const proxies = [
       `https://corsproxy.io/?${encodeURIComponent(rssUrl)}`,
-      `https://api.allorigins.win/raw?url=${encodeURIComponent(rssUrl)}`
+      `https://api.allorigins.win/raw?url=${encodeURIComponent(rssUrl)}`,
+      `https://thingproxy.freeboard.io/fetch/${rssUrl}`,
+      `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(rssUrl)}`
     ];
     for (const url of proxies) {
       try {
-        const res = await fetch(url, { cache: 'no-cache' });
+        const res = await fetch(url, { cache: 'no-cache', signal: AbortSignal.timeout(6000) });
         if (!res.ok) continue;
         const text = await res.text();
+        if (!text.includes('<entry>')) continue;
         const parser = new DOMParser();
         const xml = parser.parseFromString(text, 'application/xml');
         const entries = [...xml.querySelectorAll('entry')];
         if (!entries.length) continue;
-        return entries.slice(0, 6).map(e => {
-          const videoId = (e.querySelector('videoId')?.textContent ||
-            e.querySelector('id')?.textContent?.match(/([A-Za-z0-9_-]{11})$/)?.[1] || '');
+        const videos = entries.slice(0, 6).map(e => {
+          const videoId = e.querySelector('videoId')?.textContent ||
+            e.querySelector('id')?.textContent?.match(/([A-Za-z0-9_-]{11})$/)?.[1] || '';
           const title = e.querySelector('title')?.textContent || 'Joy Fellowship Church';
-          return { id: videoId, title };
+          return { id: videoId.trim(), title: title.trim() };
         }).filter(v => v.id.length === 11);
+        if (videos.length) return videos;
       } catch { continue; }
     }
     return null;
