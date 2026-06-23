@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joy Fellowship Church · St. Catharines</title>
+<meta name="description" content="Joy Fellowship Church — igreja de língua portuguesa em St. Catharines, ON. Cultos aos sábados às 18h. Você é nosso convidado.">
+<link rel="icon" href="logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --violet:#7C6FE0;
+    --blue:#4F9FF2;
+    --coral:#F4805A;
+    --coral-dark:#E35A33;
+    --ink:#241F3D;
+    --paper:#FFFBF6;
+    --sand:#F4EFE6;
+    --white:#FFFFFF;
+    --gradient: linear-gradient(135deg, var(--violet), var(--blue));
+    --radius-lg: 28px;
+    --radius-md: 18px;
+    --radius-sm: 10px;
+    --shadow: 0 18px 40px -16px rgba(36,31,61,0.25);
+    --maxw: 1180px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    font-family:'Work Sans', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Fredoka', sans-serif;
+    font-weight:600;
+    line-height:1.12;
+    margin:0;
+  }
+
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+
+  /* ---------- Swoosh signature element ---------- */
+  .swoosh{
+    width:64px; height:28px;
+    display:block;
+  }
+  .swoosh path{ stroke-linecap:round; fill:none; stroke-width:5; }
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,251,246,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(36,31,61,0.08);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 24px; max-width:var(--maxw); margin:0 auto;
+  }
+  .brand{display:flex; align-items:center; gap:10px; text-decoration:none;}
+  .brand img{width:40px; height:40px; border-radius:12px; box-shadow:var(--shadow);}
+  .brand span{font-family:'Fredoka',sans-serif; font-weight:600; font-size:1.05rem; color:var(--ink);}
+  .nav-links{display:flex; gap:26px; list-style:none; margin:0; padding:0; align-items:center;}
+  .nav-links a{
+    text-decoration:none; font-weight:500; font-size:0.95rem; color:var(--ink);
+    position:relative; padding:4px 2px;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{color:var(--coral-dark);}
+  .nav-cta{
+    background:var(--coral); color:var(--ink); font-weight:600;
+    padding:10px 18px; border-radius:999px; text-decoration:none; font-size:0.92rem;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .nav-cta:hover{transform:translateY(-1px); box-shadow:0 10px 20px -8px rgba(227,90,51,0.5);}
+  .nav-toggle{display:none; background:none; border:none; cursor:pointer; padding:8px;}
+  .nav-toggle span{display:block; width:24px; height:2.5px; background:var(--ink); margin:5px 0; border-radius:2px;}
+
+  @media (max-width: 880px){
+    .nav-links{
+      position:fixed; inset:64px 16px auto 16px;
+      background:var(--white); border-radius:var(--radius-md);
+      flex-direction:column; align-items:flex-start; gap:4px;
+      padding:14px; box-shadow:var(--shadow);
+      transform:translateY(-12px); opacity:0; pointer-events:none;
+      transition:opacity .2s ease, transform .2s ease;
+    }
+    .nav-links.open{transform:translateY(0); opacity:1; pointer-events:auto;}
+    .nav-links a{width:100%; padding:10px 8px; border-radius:8px;}
+    .nav-links a:hover{background:var(--sand);}
+    .nav-toggle{display:block;}
+    .nav-cta{margin-top:6px;}
+  }
+
+  button:focus-visible, a:focus-visible{
+    outline:3px solid var(--coral-dark); outline-offset:3px; border-radius:6px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:var(--gradient);
+    color:var(--white);
+    position:relative;
+    overflow:hidden;
+    padding:88px 0 0;
+  }
+  /* ---------- Hero video background ---------- */
+  .hero-video{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; object-position:center;
+    z-index:0; pointer-events:none;
+  }
+  .hero-overlay{
+    position:absolute; inset:0; z-index:1;
+    background: linear-gradient(135deg,
+      rgba(80,60,180,0.72) 0%,
+      rgba(55,110,220,0.60) 60%,
+      rgba(36,31,61,0.55) 100%);
+  }
+  .hero-inner{
+    position:relative; z-index:2;
+  }
+    max-width:var(--maxw); margin:0 auto; padding:0 24px 110px;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,0.16); border:1px solid rgba(255,255,255,0.35);
+    padding:7px 16px; border-radius:999px; font-size:0.85rem; font-weight:600;
+    letter-spacing:0.02em; margin-bottom:22px;
+  }
+  .hero h1{font-size:clamp(2.2rem, 4.2vw, 3.4rem); max-width:14ch;}
+  .hero p.lead{font-size:1.15rem; max-width:42ch; margin:20px 0 30px; opacity:0.94;}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:14px 26px; border-radius:999px; text-decoration:none;
+    font-weight:600; font-size:0.98rem; border:2px solid transparent;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-coral{background:var(--coral); color:var(--ink);}
+  .btn-coral:hover{transform:translateY(-2px); box-shadow:0 14px 26px -10px rgba(0,0,0,0.35);}
+  .btn-ghost{border-color:rgba(255,255,255,0.6); color:var(--white);}
+  .btn-ghost:hover{background:rgba(255,255,255,0.14); transform:translateY(-2px);}
+  .btn-ink{background:var(--ink); color:var(--white);}
+  .btn-ink:hover{transform:translateY(-2px); box-shadow:0 14px 26px -10px rgba(36,31,61,0.5);}
+
+  .hero-badge{
+    background:rgba(255,255,255,0.97); color:var(--ink);
+    border-radius:var(--radius-lg); padding:30px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.4);
+    justify-self:end; width:100%; max-width:320px;
+  }
+  .hero-badge img{width:56px; height:56px; border-radius:16px; margin-bottom:16px;}
+  .hero-badge .time{font-family:'Fredoka',sans-serif; font-size:1.8rem; font-weight:600; color:var(--coral-dark);}
+  .hero-badge .addr{font-size:0.92rem; margin-top:6px; color:rgba(36,31,61,0.75);}
+
+  .hero-wave{
+    position:absolute; left:0; right:0; bottom:-1px; line-height:0;
+  }
+
+  @media (max-width: 880px){
+    .hero-inner{grid-template-columns:1fr; padding-bottom:80px;}
+    .hero-badge{justify-self:start; max-width:340px;}
+  }
+
+  /* ---------- Section scaffolding ---------- */
+  section{padding:90px 0;}
+  .section-alt{background:var(--sand);}
+  .eyebrow-sm{
+    text-transform:uppercase; letter-spacing:0.12em; font-size:0.78rem;
+    font-weight:700; color:var(--coral-dark);
+  }
+  .section-head{max-width:640px; margin-bottom:48px;}
+  .section-head h2{font-size:clamp(1.8rem, 3vw, 2.5rem); margin-top:10px;}
+  .section-head p{font-size:1.05rem; color:rgba(36,31,61,0.78); margin-top:14px;}
+  .divider{margin:18px 0 0;}
+  .divider path{stroke:var(--coral);}
+
+  /* ---------- Sobre ---------- */
+  .sobre-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:start;}
+  .sobre-grid p{font-size:1.04rem; color:rgba(36,31,61,0.85);}
+  .mission-quote{
+    background:var(--gradient); color:var(--white); border-radius:var(--radius-md);
+    padding:26px 28px; font-family:'Fredoka',sans-serif; font-weight:500; font-size:1.15rem;
+    margin:26px 0; line-height:1.4;
+  }
+  .values{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .value-card{
+    background:var(--white); border-radius:var(--radius-md); padding:20px;
+    box-shadow:var(--shadow);
+  }
+  .value-card .dot{width:10px; height:10px; border-radius:50%; background:var(--coral); margin-bottom:10px;}
+  .value-card h3{font-size:1.02rem; font-weight:600;}
+  .value-card p{font-size:0.88rem; color:rgba(36,31,61,0.7); margin:6px 0 0;}
+
+  .leader-card{
+    background:var(--white); border-radius:var(--radius-md); padding:22px;
+    box-shadow:var(--shadow); margin-top:24px;
+  }
+  .leader-card .eyebrow-sm{display:block; margin-bottom:8px;}
+  .leader-card h3{font-size:1.1rem;}
+  .leader-card p{font-size:0.92rem; color:rgba(36,31,61,0.72); margin-top:6px;}
+
+  .family-note{
+    margin-top:32px; padding:18px 20px; border-radius:var(--radius-md);
+    background:var(--sand); font-size:0.92rem; color:rgba(36,31,61,0.8);
+  }
+  .family-note a{color:var(--coral-dark); font-weight:600; text-decoration:underline;}
+
+  @media (max-width:880px){
+    .sobre-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Horários ---------- */
+  .horarios-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:32px; align-items:stretch;}
+  .info-card{
+    background:var(--ink); color:var(--white); border-radius:var(--radius-lg);
+    padding:36px; display:flex; flex-direction:column; gap:18px;
+  }
+  .info-card .time-big{font-family:'Fredoka',sans-serif; font-size:2.6rem; font-weight:600; color:var(--coral);}
+  .info-card .label{font-size:0.85rem; opacity:0.75; text-transform:uppercase; letter-spacing:0.08em;}
+  .info-card .addr-block{font-size:1.05rem; line-height:1.5;}
+  .map-frame{
+    border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow);
+    min-height:320px; border:none;
+  }
+  .map-frame iframe{width:100%; height:100%; min-height:320px; border:none; display:block;}
+
+  @media (max-width:880px){
+    .horarios-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Sermões ---------- */
+  .media-grid{display:grid; grid-template-columns:1.3fr 0.9fr; gap:28px;}
+  .media-card{
+    background:var(--white); border-radius:var(--radius-lg); padding:18px;
+    box-shadow:var(--shadow);
+  }
+  .media-card h3{font-size:1.05rem; margin-bottom:14px; display:flex; align-items:center; gap:10px;}
+  .media-card iframe{width:100%; border:none; border-radius:var(--radius-sm); display:block;}
+
+  /* ---------- YouTube carousel ---------- */
+  .yt-stage{position:relative;}
+  .yt-frame{
+    position:relative; width:100%; aspect-ratio:16/9;
+    border-radius:var(--radius-sm); overflow:hidden; background:#000; cursor:pointer;
+  }
+  .yt-frame img{width:100%; height:100%; object-fit:cover; display:block;}
+  .yt-frame iframe{width:100%; height:100%; border:none; display:block; border-radius:0;}
+  .yt-play{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none;}
+  .yt-play svg{width:60px; height:42px; filter:drop-shadow(0 6px 14px rgba(0,0,0,0.45));}
+  .yt-title-overlay{
+    position:absolute; left:0; right:0; bottom:0; padding:14px 16px;
+    background:linear-gradient(0deg, rgba(0,0,0,0.65), transparent);
+    color:#fff; font-weight:600; font-size:0.92rem; pointer-events:none;
+  }
+  .yt-arrow{
+    position:absolute; top:50%; transform:translateY(-50%); z-index:5;
+    width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.92);
+    border:none; cursor:pointer; font-size:1.3rem; line-height:1; color:var(--ink);
+    box-shadow:var(--shadow);
+  }
+  .yt-arrow:hover{background:var(--coral);}
+  .yt-prev{left:8px;}
+  .yt-next{right:8px;}
+  .yt-thumbs{display:flex; gap:8px; margin-top:10px; overflow-x:auto; padding-bottom:4px;}
+  .yt-thumb{
+    flex:0 0 auto; width:96px; aspect-ratio:16/9; border-radius:8px; overflow:hidden;
+    border:2px solid transparent; cursor:pointer; opacity:0.65; padding:0;
+    transition:opacity .2s ease, border-color .2s ease; background:#000;
+  }
+  .yt-thumb img{width:100%; height:100%; object-fit:cover; display:block;}
+  .yt-thumb.active{opacity:1; border-color:var(--coral);}
+  .yt-thumb:hover{opacity:1;}
+  .follow-row{display:flex; gap:10px; margin-top:16px; flex-wrap:wrap;}
+  .follow-row a{
+    font-size:0.85rem; font-weight:600; padding:9px 14px; border-radius:999px;
+    background:var(--sand); text-decoration:none; color:var(--ink);
+  }
+  .follow-row a:hover{background:var(--coral); color:var(--ink);}
+
+  @media (max-width:880px){
+    .media-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Form sections ---------- */
+  .form-card{
+    background:var(--white); border-radius:var(--radius-lg); box-shadow:var(--shadow);
+    overflow:hidden; max-width:760px;
+  }
+  .form-card iframe{width:100%; height:760px; border:none; display:block;}
+  .form-meta{padding:22px 26px 0;}
+  .badge-pill{
+    display:inline-block; background:var(--coral); color:var(--ink); font-weight:700;
+    font-size:0.78rem; text-transform:uppercase; letter-spacing:0.06em;
+    padding:6px 14px; border-radius:999px; margin-bottom:14px;
+  }
+
+  .section-batismo{background:var(--gradient); color:var(--white);}
+  .section-batismo .section-head p{color:rgba(255,255,255,0.85);}
+  .section-batismo .badge-pill{background:var(--white); color:var(--ink);}
+  .section-batismo .divider path{stroke:var(--white);}
+  .section-batismo .eyebrow-sm{color:#FFE3D6;}
+
+  /* ---------- Contribua ---------- */
+  .give-card{
+    background:var(--white); border-radius:var(--radius-lg); box-shadow:var(--shadow);
+    padding:36px; max-width:640px; display:grid; gap:18px;
+  }
+  .give-row{display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
+    border-top:1px solid var(--sand); padding-top:16px;}
+  .give-row:first-child{border-top:none; padding-top:0;}
+  .give-row .k{font-size:0.8rem; text-transform:uppercase; letter-spacing:0.07em; color:rgba(36,31,61,0.55); font-weight:600;}
+  .give-row .v{font-family:'Fredoka',sans-serif; font-size:1.15rem; font-weight:600;}
+  .give-note{
+    background:var(--sand); border-radius:var(--radius-sm); padding:16px 18px; font-size:0.92rem;
+    color:rgba(36,31,61,0.82);
+  }
+
+  /* ---------- Contato / Footer ---------- */
+  .footer{background:var(--ink); color:var(--white); padding:64px 0 28px;}
+  .footer-top{display:grid; grid-template-columns:1.2fr 0.8fr 0.8fr; gap:40px; padding-bottom:40px;
+    border-bottom:1px solid rgba(255,255,255,0.12);}
+  .footer-brand{display:flex; align-items:center; gap:12px; margin-bottom:14px;}
+  .footer-brand img{width:44px; height:44px; border-radius:12px;}
+  .footer-brand span{font-family:'Fredoka',sans-serif; font-weight:600; font-size:1.1rem;}
+  .footer p{font-size:0.92rem; color:rgba(255,255,255,0.7); max-width:38ch;}
+  .footer h4{font-family:'Work Sans',sans-serif; font-size:0.82rem; text-transform:uppercase;
+    letter-spacing:0.08em; color:rgba(255,255,255,0.55); margin-bottom:14px; font-weight:700;}
+  .footer ul{list-style:none; margin:0; padding:0; display:grid; gap:10px;}
+  .footer ul a{text-decoration:none; color:rgba(255,255,255,0.85); font-size:0.95rem;}
+  .footer ul a:hover{color:var(--coral);}
+  .social-row{display:flex; gap:12px; margin-top:6px;}
+  .social-row a{
+    width:42px; height:42px; border-radius:50%; background:rgba(255,255,255,0.1);
+    display:flex; align-items:center; justify-content:center; text-decoration:none;
+  }
+  .social-row a:hover{background:var(--coral);}
+  .social-row svg{width:19px; height:19px; fill:var(--white);}
+  .footer-bottom{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    padding-top:24px; font-size:0.82rem; color:rgba(255,255,255,0.55);
+  }
+  .footer-bottom a{color:rgba(255,255,255,0.75); text-decoration:underline;}
+
+  @media (max-width:880px){
+    .footer-top{grid-template-columns:1fr; gap:30px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#inicio">
+      <img src="logo.jpg" alt="Logo Joy Fellowship Church">
+      <span>Joy Fellowship Church</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#horarios">Horários</a></li>
+      <li><a href="#sermoes">Mensagens</a></li>
+      <li><a href="#batismo">Batismo</a></li>
+      <li><a href="#contribua">Contribua</a></li>
+      <li><a href="#contato">Contato</a></li>
+      <li><a class="nav-cta" href="#servir">Quero Servir</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <video class="hero-video" autoplay muted loop playsinline
+    poster=""
+    onerror="this.style.display='none'">
+    <source src="Dia dos pais.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow">
+        <svg class="swoosh" viewBox="0 0 64 28" aria-hidden="true"><path d="M4 6 C 4 18, 14 24, 24 18 C 34 12, 44 22, 60 8" stroke="white"/></svg>
+        St. Catharines · Igreja em português
+      </span>
+      <h1>Uma família que celebra a alegria do Evangelho, em português.</h1>
+      <p class="lead">Cultos toda semana num clima de fé, acolhimento e comunidade. Não importa de onde você venha — você é nosso convidado.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-coral" href="#horarios">Ver horários e endereço</a>
+        <a class="btn btn-ghost" href="#sermoes">Assistir mensagens</a>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <img src="logo.jpg" alt="Logo Joy Fellowship Church">
+      <div class="label" style="text-transform:uppercase;letter-spacing:.08em;font-size:.75rem;color:rgba(36,31,61,.55);font-weight:600;">Próximo culto</div>
+      <div class="time">Sábado, 18h00</div>
+      <div class="addr">51 South Service Rd<br>St. Catharines, ON L2R 6P9</div>
+    </div>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="width:100%; height:60px; display:block;">
+      <path d="M0,32 C 360,70 1080,-10 1440,30 L1440,60 L0,60 Z" fill="#FFFBF6"></path>
+    </svg>
+  </div>
+</header>
+
+<section id="sobre">
+  <div class="wrap sobre-grid">
+    <div>
+      <span class="eyebrow-sm">Quem somos</span>
+      <h2 style="font-family:'Fredoka',sans-serif; font-size:2.1rem; margin-top:10px;">Fé, comunidade e acolhimento no idioma do coração.</h2>
+      <svg class="swoosh divider" viewBox="0 0 64 28" aria-hidden="true"><path d="M4 6 C 4 18, 14 24, 24 18 C 34 12, 44 22, 60 8"/></svg>
+      <p style="margin-top:22px;">A Joy Fellowship Church é uma igreja cristã de língua portuguesa em St. Catharines, Ontário. Nascemos como uma implantação da Joy Church de Hamilton e, hoje, caminhamos sob o cuidado e a supervisão espiritual da Harbour Fellowship Church, igreja batista canadense também sediada em St. Catharines.</p>
+      <p>Mais do que um culto aos sábados, somos uma família estendida — um lugar para brasileiros, portugueses e toda a comunidade lusófona da região de Niagara viverem sua fé em comunidade, no idioma que fala diretamente ao coração.</p>
+
+      <div class="mission-quote">
+        “Nossa missão é proclamar Jesus, conectar corações e impactar vidas com o poder do Evangelho.”
+      </div>
+
+      <div class="leader-card">
+        <span class="eyebrow-sm">Liderança</span>
+        <h3>Pr. Diego Silva</h3>
+        <p>Conduz semanalmente o ensino da Palavra na Joy Fellowship Church, com a participação eventual de pregadores convidados, como o Pr. Wellington Mariano.</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="values">
+        <div class="value-card"><div class="dot"></div><h3>Cristocêntrica</h3><p>Tudo o que fazemos aponta para Jesus.</p></div>
+        <div class="value-card"><div class="dot"></div><h3>Contemporânea</h3><p>Linguagem e cultura do nosso tempo.</p></div>
+        <div class="value-card"><div class="dot"></div><h3>Acolhedora</h3><p>Toda pessoa é bem-vinda como é.</p></div>
+        <div class="value-card"><div class="dot"></div><h3>Transformadora</h3><p>Vidas mudadas pelo poder do Evangelho.</p></div>
+      </div>
+
+      <div class="family-note">
+        A Joy Fellowship Church faz parte da família <strong>Joy Church</strong>, com sede em Hamilton, ON, e presença em diversas cidades da região. Conheça a igreja-mãe em <a href="https://joychurch.ca" target="_blank" rel="noopener">joychurch.ca</a>.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="horarios" class="section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow-sm">Horários &amp; localização</span>
+      <h2>Te esperamos no próximo culto.</h2>
+      <svg class="swoosh divider" viewBox="0 0 64 28" aria-hidden="true"><path d="M4 6 C 4 18, 14 24, 24 18 C 34 12, 44 22, 60 8"/></svg>
+    </div>
+    <div class="horarios-grid">
+      <div class="info-card">
+        <div>
+          <div class="label">Cultos</div>
+          <div class="time-big">Sáb · 18h00</div>
+        </div>
+        <div>
+          <div class="label">Endereço</div>
+          <div class="addr-block">51 South Service Rd<br>St. Catharines, ON L2R 6P9</div>
+        </div>
+        <a class="btn btn-ink" href="https://www.google.com/maps/dir/?api=1&destination=51+South+Service+Rd,+St.+Catharines,+ON+L2R+6P9" target="_blank" rel="noopener">Como chegar</a>
+      </div>
+      <div class="map-frame">
+        <iframe loading="lazy" title="Mapa do endereço da Joy Fellowship Church" src="https://maps.google.com/maps?q=51+South+Service+Rd,+St.+Catharines,+ON+L2R+6P9&t=m&z=15&output=embed&iwloc=near"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sermoes">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow-sm">Mensagens &amp; louvor</span>
+      <h2>Acompanhe nossos últimos cultos.</h2>
+      <svg class="swoosh divider" viewBox="0 0 64 28" aria-hidden="true"><path d="M4 6 C 4 18, 14 24, 24 18 C 34 12, 44 22, 60 8"/></svg>
+      <p>Direto do nosso canal no YouTube e do nosso podcast no Spotify — onde quer que você esteja.</p>
+    </div>
+    <div class="media-grid">
+      <div class="media-card">
+        <h3>📺 Vídeos da igreja</h3>
+        <div class="yt-carousel">
+          <div class="yt-stage">
+            <button class="yt-arrow yt-prev" id="ytPrev" aria-label="Vídeo anterior">‹</button>
+            <div class="yt-frame" id="ytFrame"></div>
+            <button class="yt-arrow yt-next" id="ytNext" aria-label="Próximo vídeo">›</button>
+          </div>
+          <div class="yt-thumbs" id="ytThumbs"></div>
+        </div>
+        <div class="follow-row">
+          <a href="https://www.youtube.com/@JoyFellowshipChurchSTC" target="_blank" rel="noopener">Inscreva-se no canal</a>
+        </div>
+      </div>
+      <div class="media-card">
+        <h3>🎙️ Podcast no Spotify</h3>
+        <iframe loading="lazy" height="380" title="Podcast da Joy Fellowship Church no Spotify" src="https://open.spotify.com/embed/show/5dNPqQmUiwLVrInOkcgVnb"></iframe>
+        <div class="follow-row">
+          <a href="https://www.instagram.com/joychurchstca/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://open.spotify.com/show/5dNPqQmUiwLVrInOkcgVnb" target="_blank" rel="noopener">Spotify</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servir" class="section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow-sm">Quero Servir</span>
+      <h2>Use seus dons para edificar essa família.</h2>
+      <svg class="swoosh divider" viewBox="0 0 64 28" aria-hidden="true"><path d="M4 6 C 4 18, 14 24, 24 18 C 34 12, 44 22, 60 8"/></svg>
+      <p>Toda igreja é construída por gente disposta a servir. Conte pra gente onde você gostaria de ajudar.</p>
+    </div>
+    <div class="form-card">
+      <iframe loading="lazy" title="Formulário Quero Servir" src="https://docs.google.com/forms/d/1rmkGESYed97oUdm0UsSIx95yR0-NJOhxja0dalyrl58/viewform?embedded=true">Carregando formulário…</iframe>
+    </div>
+  </div>
+</section>
+
+<section id="batismo" class="section-batismo">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow-sm">Batismo</span>
+      <span class="badge-pill">Acontece semestralmente</span>
+      <h2>Já decidiu seguir Jesus? Dê esse próximo passo com a gente.</h2>
+      <svg class="swoosh divider" viewBox="0 0 64 28" aria-hidden="true"><path d="M4 6 C 4 18, 14 24, 24 18 C 34 12, 44 22, 60 8"/></svg>
+      <p>O batismo é o passo público de quem decidiu seguir a Jesus. Acontece duas vezes por ano — inscreva-se abaixo para participar da próxima turma.</p>
+    </div>
+    <div class="form-card">
+      <iframe loading="lazy" title="Formulário de inscrição para Batismo" src="https://docs.google.com/forms/d/14W4WRGh8O5zQi_UXCQuTdzTqbTUUUAiG6dYbYhBYRTs/viewform?embedded=true">Carregando formulário…</iframe>
+    </div>
+  </div>
+</section>
+
+<section id="contribua">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow-sm">Contribua</span>
+      <h2>Sua generosidade sustenta essa obra.</h2>
+      <svg class="swoosh divider" viewBox="0 0 64 28" aria-hidden="true"><path d="M4 6 C 4 18, 14 24, 24 18 C 34 12, 44 22, 60 8"/></svg>
+    </div>
+    <div class="give-card">
+      <div class="give-row">
+        <div>
+          <div class="k">Método</div>
+          <div class="v">Interac e-Transfer</div>
+        </div>
+      </div>
+      <div class="give-row">
+        <div class="k">E-mail para envio</div>
+        <div class="v">give@harbourfellowship.com</div>
+      </div>
+      <div class="give-row">
+        <div class="k">Mensagem obrigatória</div>
+        <div class="v">"Joy Church"</div>
+      </div>
+      <div class="give-note">
+        Essa conta é administrada pela Harbour Fellowship Church, que dá suporte financeiro à Joy Fellowship Church e a outras igrejas parceiras. Por isso, é essencial escrever <strong>"Joy Church"</strong> no campo de mensagem do seu e-transfer — assim sua contribuição é corretamente direcionada à nossa igreja.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" id="contato">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <img src="logo.jpg" alt="Logo Joy Fellowship Church">
+          <span>Joy Fellowship Church</span>
+        </div>
+        <p>Igreja cristã de língua portuguesa em St. Catharines, ON. Parte da família Joy Church, sob o cuidado espiritual da Harbour Fellowship Church.</p>
+        <div class="social-row">
+          <a href="https://www.instagram.com/joychurchstca/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2 .25 2.4.42.6.24 1 .53 1.5 1s.8.9 1 1.5c.17.4.36 1.2.42 2.4.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 2-.42 2.4-.24.6-.53 1-1 1.5s-.9.8-1.5 1c-.4.17-1.2.36-2.4.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2-.25-2.4-.42-.6-.24-1-.53-1.5-1s-.8-.9-1-1.5c-.17-.4-.36-1.2-.42-2.4C2.21 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-2 .42-2.4.24-.6.53-1 1-1.5s.9-.8 1.5-1c.4-.17 1.2-.36 2.4-.42C8.4 2.21 8.8 2.2 12 2.2zM12 0C8.7 0 8.3 0 7 .07c-1.3.06-2.2.27-3 .58a6 6 0 0 0-2.17 1.4A6 6 0 0 0 .42 4.2C.1 5 0 5.9-.07 7.2 0 8.5 0 8.9 0 12s0 3.5.07 4.8c.06 1.3.27 2.2.58 3a6 6 0 0 0 1.4 2.17 6 6 0 0 0 2.17 1.4c.8.32 1.7.53 3 .58 1.3.07 1.7.07 5 .07s3.5 0 4.8-.07c1.3-.06 2.2-.27 3-.58a6 6 0 0 0 2.17-1.4 6 6 0 0 0 1.4-2.17c.32-.8.53-1.7.58-3 .07-1.3.07-1.7.07-4.8s0-3.5-.07-4.8c-.06-1.3-.27-2.2-.58-3a6 6 0 0 0-1.4-2.17A6 6 0 0 0 19.8.58c-.8-.32-1.7-.53-3-.58C15.5 0 15.1 0 12 0z"/><path d="M12 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4zM18.4 4.6a1.44 1.44 0 1 0 1.44 1.44A1.44 1.44 0 0 0 18.4 4.6z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@JoyFellowshipChurchSTC" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6z"/></svg>
+          </a>
+          <a href="https://open.spotify.com/show/5dNPqQmUiwLVrInOkcgVnb" target="_blank" rel="noopener" aria-label="Spotify">
+            <svg viewBox="0 0 24 24"><path d="M12 0a12 12 0 1 0 12 12A12 12 0 0 0 12 0zm5.5 17.3a.75.75 0 0 1-1 .26c-2.8-1.7-6.3-2.1-10.4-1.15a.75.75 0 1 1-.34-1.46c4.5-1.03 8.4-.58 11.5 1.3a.75.75 0 0 1 .26 1.05zm1.47-3.27a.94.94 0 0 1-1.29.31c-3.2-2-8.1-2.55-11.9-1.4a.94.94 0 1 1-.55-1.8c4.3-1.3 9.7-.7 13.4 1.6a.94.94 0 0 1 .34 1.29zm.13-3.4C15.6 8.3 9.3 8.1 5.7 9.2a1.13 1.13 0 1 1-.65-2.16c4.15-1.26 11.1-1 15.3 1.5a1.13 1.13 0 1 1-1.15 1.94z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#horarios">Horários</a></li>
+          <li><a href="#sermoes">Mensagens</a></li>
+          <li><a href="#servir">Quero Servir</a></li>
+          <li><a href="#batismo">Batismo</a></li>
+          <li><a href="#contribua">Contribua</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Visite-nos</h4>
+        <ul>
+          <li>Sábados, 18h00</li>
+          <li>51 South Service Rd</li>
+          <li>St. Catharines, ON L2R 6P9</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span id="year-copy">© Joy Fellowship Church — St. Catharines</span>
+      <span>Parte da família <a href="https://joychurch.ca" target="_blank" rel="noopener">Joy Church</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  document.getElementById('year-copy').textContent =
+    '© ' + new Date().getFullYear() + ' Joy Fellowship Church — St. Catharines';
+
+  /* ---------- YouTube carousel — RSS automático ---------- */
+  const YT_CHANNEL_ID = 'UC-RK7wM8XwSi83H0bOsog8g';
+  const YT_FALLBACK = [{ id: 'xINcVeu0coY', title: 'Culto ao vivo — Joy Fellowship Church' }];
+  const ytThumbUrl = (id) => `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+  let ytVideos = [];
+  let ytActive = 0;
+  let ytTimer = null;
+
+  // Mostra spinner enquanto carrega
+  (function showLoadingState() {
+    document.getElementById('ytFrame').innerHTML =
+      '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#fff;font-size:0.9rem;gap:8px;">' +
+      '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round">' +
+      '<path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>Carregando…</div>';
+  })();
+
+  function ytIdFromUrl(url) {
+    const m = url.match(/(?:v=|\/shorts\/|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+    return m ? m[1] : null;
+  }
+
+  async function fetchYtFeed() {
+    const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${YT_CHANNEL_ID}`;
+    const proxies = [
+      `https://corsproxy.io/?${encodeURIComponent(rssUrl)}`,
+      `https://api.allorigins.win/raw?url=${encodeURIComponent(rssUrl)}`
+    ];
+    for (const url of proxies) {
+      try {
+        const res = await fetch(url, { cache: 'no-cache' });
+        if (!res.ok) continue;
+        const text = await res.text();
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(text, 'application/xml');
+        const entries = [...xml.querySelectorAll('entry')];
+        if (!entries.length) continue;
+        return entries.slice(0, 6).map(e => {
+          const videoId = (e.querySelector('videoId')?.textContent ||
+            e.querySelector('id')?.textContent?.match(/([A-Za-z0-9_-]{11})$/)?.[1] || '');
+          const title = e.querySelector('title')?.textContent || 'Joy Fellowship Church';
+          return { id: videoId, title };
+        }).filter(v => v.id.length === 11);
+      } catch { continue; }
+    }
+    return null;
+  }
+
+  function initCarousel(videos) {
+    ytVideos = videos;
+    ytActive = 0;
+    const hasMult = ytVideos.length > 1;
+    document.getElementById('ytPrev').style.display = hasMult ? '' : 'none';
+    document.getElementById('ytNext').style.display = hasMult ? '' : 'none';
+    document.getElementById('ytThumbs').style.display = hasMult ? '' : 'none';
+    renderYtThumbs();
+    renderYtFrame();
+    resetYtAutoRotate();
+  }
+
+  function renderYtFrame() {
+    const frame = document.getElementById('ytFrame');
+    const v = ytVideos[ytActive];
+    frame.innerHTML = `
+      <img src="${ytThumbUrl(v.id)}" alt="${v.title}">
+      <div class="yt-play" aria-hidden="true">
+        <svg viewBox="0 0 68 48"><path d="M66.5 7.5a8.3 8.3 0 0 0-5.8-5.9C55.6 0 34 0 34 0S12.4 0 7.3 1.6A8.3 8.3 0 0 0 1.5 7.5 86 86 0 0 0 0 24a86 86 0 0 0 1.5 16.5 8.3 8.3 0 0 0 5.8 5.9C12.4 48 34 48 34 48s21.6 0 26.7-1.6a8.3 8.3 0 0 0 5.8-5.9A86 86 0 0 0 68 24a86 86 0 0 0-1.5-16.5z" fill="#FF0000"/><path d="M27 34.5 45 24 27 13.5z" fill="#fff"/></svg>
+      </div>
+      <div class="yt-title-overlay">${v.title}</div>`;
+    frame.onclick = () => window.open('https://www.youtube.com/watch?v=' + v.id, '_blank', 'noopener');
+  }
+
+  function renderYtThumbs() {
+    const wrap = document.getElementById('ytThumbs');
+    wrap.innerHTML = ytVideos.map((v, i) => `
+      <button type="button" class="yt-thumb ${i === ytActive ? 'active' : ''}" data-i="${i}" aria-label="${v.title}">
+        <img src="${ytThumbUrl(v.id)}" alt="">
+      </button>`).join('');
+    wrap.querySelectorAll('.yt-thumb').forEach(btn => {
+      btn.addEventListener('click', () => {
+        ytActive = parseInt(btn.dataset.i, 10);
+        renderYtThumbs(); renderYtFrame(); resetYtAutoRotate();
+      });
+    });
+  }
+
+  function ytStep(delta) {
+    ytActive = (ytActive + delta + ytVideos.length) % ytVideos.length;
+    renderYtThumbs(); renderYtFrame(); resetYtAutoRotate();
+  }
+
+  function resetYtAutoRotate() {
+    clearInterval(ytTimer);
+    if (ytVideos.length > 1) ytTimer = setInterval(() => ytStep(1), 6000);
+  }
+
+  document.getElementById('ytPrev').addEventListener('click', () => ytStep(-1));
+  document.getElementById('ytNext').addEventListener('click', () => ytStep(1));
+
+  // Busca o feed; usa fallback se falhar
+  fetchYtFeed().then(vids => initCarousel(vids && vids.length ? vids : YT_FALLBACK));
+</script>
+
+</body>
+</html>
